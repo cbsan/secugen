@@ -190,38 +190,6 @@ int main(int argc, char **argv) {
         return 0;
     }
 
-    if(handle == NULL)
-    {
-        handle = dlopen("./libWSQ_library64.so", RTLD_LAZY); // open shared library;
-        error = dlerror(); if(error){printf("%s\n", error); return 1;}
-    }
-
-    if (!ReadImageFromFile) 
-        {
-          ReadImageFromFile = (_ReadImageFromFile)dlsym(handle, "ReadImageFromFile");
-          error = dlerror(); if(error){printf("%s\n", error); return 1;}
-        }
-
-
-        if (!SaveImageToFile) 
-        {
-          SaveImageToFile = (_SaveImageToFile)dlsym(handle, "SaveImageToFile");
-          error = dlerror(); if(error){printf("%s\n", error); return 1;}
-        }
-
-    if (!GenerateSerialNumber) 
-        {
-          GenerateSerialNumber = (_GenerateSerialNumber)dlsym(handle, "GenerateSerialNumber");
-          error = dlerror(); if(error){printf("%s\n", error); return 1;}
-        }
-
-
-        if (!UnlockWSQLibrary) 
-        {
-          UnlockWSQLibrary = (_UnlockWSQLibrary)dlsym(handle, "UnlockWSQLibrary");
-          error = dlerror(); if(error){printf("%s\n", error); return 1;}
-        }
-
    // err = capture();
 
     vector<string> fingers;
@@ -260,16 +228,6 @@ int main(int argc, char **argv) {
         fp = fopen(kbBuffer,"wb");
         fwrite (imageBuffer2 , sizeof (BYTE) , 300*400 , fp);
         fclose(fp);
-
-        GenerateSerialNumber();
-        
-        ReadImageFromFile("./t1.wsq", &width, &height, &imageData);
-
-        type = 2;
-
-        SaveImageToFile("./imgout", type, width, height, imageData);
-
-         dlclose(handle);
         
         //err = sgfplib->SetTemplateFormat(TEMPLATE_FORMAT_SG400);
         //err = sgfplib->CreateTemplate(&fingerInfo, imageBuffer2, minutiaeBuffer2);
