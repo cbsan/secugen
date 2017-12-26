@@ -20,48 +20,6 @@ using namespace std;
 
 LPSGFPM  sgfplib = NULL;
 
-/*****/
-void* handle = NULL;
-char* error;
-
-typedef int (*_ReadImageFromFile)(const char*, int*, int*, unsigned char**);
-_ReadImageFromFile ReadImageFromFile = 0;
-
-typedef int (*_SaveImageToFile)(const char*, int, int, int, unsigned char*);
-_SaveImageToFile SaveImageToFile = 0;
-
-typedef void (*_WriteWSQ_bitrate)(double);
-_WriteWSQ_bitrate WriteWSQ_bitrate = 0;
-
-typedef double (*_ReadWSQ_bitrate)();
-_ReadWSQ_bitrate ReadWSQ_bitrate = 0;
-
-typedef void (*_WriteWSQ_ppi)(int);
-_WriteWSQ_ppi WriteWSQ_ppi = 0;
-
-typedef int (*_ReadWSQ_ppi)();
-_ReadWSQ_ppi ReadWSQ_ppi = 0;
-
-typedef void (*_WriteWSQ_comment)(char*);
-_WriteWSQ_comment WriteWSQ_comment = 0;
-
-typedef char* (*_ReadWSQ_comment)();
-_ReadWSQ_comment ReadWSQ_comment = 0;
-
-typedef void (*_WriteTIFFcompression)(int);
- _WriteTIFFcompression WriteTIFFcompression = 0;
-
-typedef void (*_WriteTIFFpredictor)(int);
-_WriteTIFFpredictor WriteTIFFpredictor = 0;
-
-typedef char* (*_GenerateSerialNumber)();
-_GenerateSerialNumber GenerateSerialNumber = 0;
-
-typedef int (*_UnlockWSQLibrary)(char* authorizationcode);
-_UnlockWSQLibrary UnlockWSQLibrary = 0;
-
-/********/
-
 int fail(DWORD err, const char *message) {
   cerr << "ERROR"
        << " (" << err << "): " << message << endl;
