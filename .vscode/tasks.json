@@ -12,6 +12,7 @@
                 "-DLINUX3",
                 "-I./include",
                 "-L./lib/linux3",
+                //"-L./lib/wsq",
                 "-D_FDU05",
                 "main.cpp",
                 "-lsgfplib",
@@ -19,6 +20,7 @@
                 "-lsgfpamx",
                 "-lsgfdu05",
                 "-lusb",
+                "-ldl"
                 "-lpthread"
             ],
             "group": {
