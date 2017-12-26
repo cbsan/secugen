@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "string_view": "cpp",
+        "string": "cpp",
+        "memory": "cpp",
+        "*.tcc": "cpp",
+        "fstream": "cpp",
+        "array": "cpp"
+    }
+}
