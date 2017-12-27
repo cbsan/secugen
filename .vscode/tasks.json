@@ -11,6 +11,7 @@
                 "-g",
                 "-DLINUX3",
                 "-I./include",
+                "-I./include/wsq",
                 "-L./lib/linux3",
                 //"-L./lib/wsq",
                 "-D_FDU05",

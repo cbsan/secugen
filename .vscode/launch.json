@@ -10,8 +10,10 @@
             "request": "launch",
             "program": "${workspaceFolder}/a.out",
             "args": [
+                
                 "${workspaceFolder}/dig_1",
-                "${workspaceFolder}/dig_2"
+                "${workspaceFolder}/dig_2",
+                "${workspaceFolder}/t1.raw"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

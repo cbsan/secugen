@@ -5,6 +5,10 @@
         "memory": "cpp",
         "*.tcc": "cpp",
         "fstream": "cpp",
-        "array": "cpp"
+        "array": "cpp",
+        "iosfwd": "cpp",
+        "istream": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp"
     }
 }

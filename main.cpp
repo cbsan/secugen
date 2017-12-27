@@ -14,7 +14,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <dlfcn.h>
-#include "include/sgfplib.h"
+#include "sgfplib.h"
 
 using namespace std;
 
@@ -91,10 +91,10 @@ int capture()
         
             
 
-            err = sgfplib->MatchTemplate(minutiaeBuffer1, minutiaeBuffer1, SL_NORMAL, &finger_matched);
+            //err = sgfplib->MatchTemplate(minutiaeBuffer1, minutiaeBuffer1, SL_NORMAL, &finger_matched);
 
-            sprintf(kbBuffer,"%s1.raw","c");
-            fp = fopen(kbBuffer,"wb");
+            
+            fp = fopen("./out/cap.raw","wb");
             fwrite (imageBuffer1 , sizeof (BYTE) , deviceInfo.ImageWidth*deviceInfo.ImageHeight , fp);
             fclose(fp);
         }
@@ -117,8 +117,6 @@ uint8_t *stringToByteArray(char* arr) {
 
     return byteArr;
 }
-
-
 
 
 int main(int argc, char **argv) {
@@ -148,7 +146,7 @@ int main(int argc, char **argv) {
         return 0;
     }
 
-   // err = capture();
+    //err = capture();
 
     vector<string> fingers;
     char *fingers_filename = argv[1];
@@ -166,30 +164,30 @@ int main(int argc, char **argv) {
     char* buffer;
     int sizeWSQ;
 
-    err = sgfplib->GetMaxTemplateSize(&templateSizeMax);
-    minutiaeBuffer2 = (BYTE*) malloc(templateSizeMax);
-    fingerInfo.FingerNumber = SG_FINGPOS_UK;
-    fingerInfo.ViewNumber = 1;
-    fingerInfo.ImpressionType = SG_IMPTYPE_LP;
-    fingerInfo.ImageQuality = quality; //0 to 100
-
-    int width = 0;
-    int height = 0;
-    unsigned char* imageData = 0;
-    int type;
+    
+    
+    
+   
     
     //while (fingers.size() > 0) {
         buffer = (char*) fingers.back().c_str();
+        
         imageBuffer2 = stringToByteArray(buffer);
         
-        sprintf(kbBuffer,"%s1.wsq","t");
-        fp = fopen(kbBuffer,"wb");
+        
+        fp = fopen("./out/dig.wsq","wb");
         fwrite (imageBuffer2 , sizeof (BYTE) , 300*400 , fp);
         fclose(fp);
+
+        // minutiaeBuffer2 = (BYTE*) malloc(300*400);
+        // fingerInfo.FingerNumber = SG_FINGPOS_UK;
+        // fingerInfo.ViewNumber = 1;
+        // fingerInfo.ImpressionType = SG_IMPTYPE_LP;
+        // fingerInfo.ImageQuality = quality; //0 to 100
         
-        //err = sgfplib->SetTemplateFormat(TEMPLATE_FORMAT_SG400);
-        //err = sgfplib->CreateTemplate(&fingerInfo, imageBuffer2, minutiaeBuffer2);
-       
+        // //err = sgfplib->SetTemplateFormat(TEMPLATE_FORMAT_ANSI378);
+        // err = sgfplib->CreateTemplate(&fingerInfo, imageBuffer2, minutiaeBuffer2);
+        
    // }
     
     return 0;
