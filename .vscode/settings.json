@@ -9,6 +9,7 @@
         "iosfwd": "cpp",
         "istream": "cpp",
         "initializer_list": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "system_error": "cpp"
     }
 }
